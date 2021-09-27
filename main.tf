@@ -2,13 +2,13 @@
 #   default = "t3.micro"
 # }
 
-locals {
-  example_instance_type = "t3.nano"
-}
+# locals {
+#   example_instance_type = "t3.nano"
+# }
 
 resource "aws_instance" "example" {
   ami           = "ami-0c3fd0f5d33134a76"
-  instance_type = local.example_instance_type
+  instance_type = "t3.micro"
 
   tags = {
     member = "noda",
@@ -20,4 +20,8 @@ resource "aws_instance" "example" {
     yum install -y httpd
     systemctl start httpd.service
   EOF
+}
+
+output "example_instance_id" {
+  value = aws_instance.example.id
 }
