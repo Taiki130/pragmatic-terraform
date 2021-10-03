@@ -13,7 +13,7 @@ resource "aws_s3_bucket" "private" {
     }
   }
   tags = {
-    member = "noda"
+    member  = "noda"
     usecase = "studying for terraform"
   }
 }
@@ -28,7 +28,7 @@ resource "aws_s3_bucket_public_access_block" "private" {
 
 resource "aws_s3_bucket" "public" {
   bucket = "public-pragmatic-terraform"
-  acl = "public-read"
+  acl    = "public-read"
 
   cors_rule {
     allowed_origins = ["https://example.com"]
@@ -37,7 +37,7 @@ resource "aws_s3_bucket" "public" {
     max_age_seconds = 3000
   }
   tags = {
-    member = "noda"
+    member  = "noda"
     usecase = "studying for terraform"
   }
 }
@@ -53,7 +53,7 @@ resource "aws_S3_bucket" "alb_log" {
     }
   }
   tags = {
-    member = "noda"
+    member  = "noda"
     usecase = "studying for terraform"
   }
 }
@@ -65,17 +65,17 @@ resource "aws_s3_bucket_policy" "alb_log" {
 
 data "aws_iam_policy_document" "alb_log" {
   statement {
-    effect = "Allow"
-    actions = ["s3:PutObject"]
+    effect    = "Allow"
+    actions   = ["s3:PutObject"]
     resources = ["arn:aws:s3:::${aws_s3_bucket.alb_log.id}/*"]
     principals {
-      type = "AWS"
+      type        = "AWS"
       identifiers = ["582318560864"]
     }
   }
 }
 
 resource "aws_s3_bucket" "force_destroy" {
-  buclet = "force-destroy-pragmatic-terraform"
+  buclet        = "force-destroy-pragmatic-terraform"
   force_destroy = true
 }
