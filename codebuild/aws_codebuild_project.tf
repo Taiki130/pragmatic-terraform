@@ -1,5 +1,5 @@
 resource "aws_codebuild_project" "example" {
-  name = "example"
+  name         = "example"
   service_role = module.codebuild_role.iam_role_arn
 
   source {
@@ -11,9 +11,9 @@ resource "aws_codebuild_project" "example" {
   }
 
   environment {
-    type = "LINUX_CONTAINER"
-    compute_type = "BUILD_GENERAL1_SMALL"
-    images = "aws/codebuild/standard:2.0"
+    type            = "LINUX_CONTAINER"
+    compute_type    = "BUILD_GENERAL1_SMALL"
+    images          = "aws/codebuild/standard:2.0"
     privileged_mode = true
   }
 }
