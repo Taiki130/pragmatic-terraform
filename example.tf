@@ -51,3 +51,17 @@ module "disallow_ssh" {
 output "disallow_ssh_rule_id" {
   value = module.disallow_ssh.allow_ssh_rule_id
 }
+
+#19.6
+data "aws_caller_identity" "current" {}
+
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+
+# 19.7
+data "aws_region" "current" {}
+
+output "region_name" {
+  value = data.aws_region.current.name
+}
