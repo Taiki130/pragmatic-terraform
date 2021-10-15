@@ -30,6 +30,7 @@ resource "aws_security_group_rule" "ingress" {
 output "allow_ssh_rule_id" {
   value = join("", aws_security_group_rule.ingress[*].id)
 }
+# https://www.terraform.io/docs/language/functions/join.html
 
 # 19.4
 module "allow_ssh" {
@@ -39,4 +40,14 @@ module "allow_ssh" {
 
 output "allow_ssh_rule_id" {
   value = module.allow_ssh.allow_ssh_rule_id
+}
+
+# 19.5
+module "disallow_ssh" {
+  source    = "./security_group"
+  allow_ssh = false
+}
+
+output "disallow_ssh_rule_id" {
+  value = module.disallow_ssh.allow_ssh_rule_id
 }
