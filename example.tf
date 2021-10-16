@@ -65,3 +65,27 @@ data "aws_region" "current" {}
 output "region_name" {
   value = data.aws_region.current.name
 }
+
+# 19.8
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+output "availability_zones" {
+  value = data.aws_availability_zones.available.names
+}
+
+# 19.9
+data "aws_elb_service_account" "current" {}
+
+output "alb_service_account_id" {
+  value = data.aws_elb_service_account.current.id
+}
+
+# 19.10
+provider "random" {}
+
+resource "random_string" "password" {
+  length  = 32
+  special = false
+}
