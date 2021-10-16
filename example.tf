@@ -93,6 +93,16 @@ output "alb_service_account_id" {
 # > substr("Pragmatic Terraform on AWS", 10, 9)
 # Terraform
 
+# > flatten([["Pragmatic"], ["Terraform", ["on", "AWS"]]])
+# [
+#   "Pragmatic",
+#   "Terraform",
+#   "on",
+#   "AWS",
+# ]
+
+# > templatefile("${path.module}/install.sh", { package = "httpd" })
+
 # 19.10
 provider "random" {}
 
