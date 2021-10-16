@@ -82,6 +82,17 @@ output "alb_service_account_id" {
   value = data.aws_elb_service_account.current.id
 }
 
+# $ terraform console
+# > cidrsubnet("10.1.0.0/16", 8, 3)
+# 10.1.3.0/24
+# > exit
+
+# > max(1, 100, 10)
+# 100
+
+# > substr("Pragmatic Terraform on AWS", 10, 9)
+# Terraform
+
 # 19.10
 provider "random" {}
 
