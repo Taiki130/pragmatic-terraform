@@ -144,3 +144,24 @@ resource "aws_vpc" "default" {
 output "vpc_arn" {
   value = aws_vpc.default.arn
 }
+
+# 19.16
+module "virginia" {
+  source = "./vpc"
+
+  providers = {
+    aws = aws.virginia
+  }
+}
+
+module "tokyo" {
+  source = "./vpc"
+}
+
+output "module_virginia_vpc" {
+  value = module.virginia.vpc_arn
+}
+
+output "module_tokyo_vpc" {
+  value = module.tokyo.vpc_arn
+}
