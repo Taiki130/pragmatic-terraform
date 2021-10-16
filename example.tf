@@ -97,3 +97,23 @@ resource "random_string" "password" {
   length  = 32
   special = false
 }
+
+# 19.12
+resource "aws_db_instance" "example" {
+  engine              = "mysql"
+  instance_class      = "db.t3.small"
+  allocated_storage   = 20
+  skip_final_snapshot = true
+  username            = "admin"
+  password            = random_string.password.result
+}
+
+# 19.13
+provider "aws" {
+  alias  = "virginia"
+  region = "us-east-1"
+}
+
+provider "aws" {
+  region = "ap-northeast-1"
+}
