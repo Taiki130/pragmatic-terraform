@@ -89,3 +89,11 @@ resource "random_string" "password" {
   length  = 32
   special = false
 }
+
+# 19.11
+provider "random" {}
+
+resource "random_string" "password" {
+  length  = 32
+  special = false
+}
