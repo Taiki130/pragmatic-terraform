@@ -184,3 +184,9 @@ resource "aws_security_group" "default" {
     }
   }
 }
+
+# 19.18
+module "simple_sg" {
+  source = "./simple_security_group"
+  ports  = [80, 443, 8080]
+}
