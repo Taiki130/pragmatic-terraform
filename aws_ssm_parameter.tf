@@ -12,6 +12,6 @@ resource "aws_ssm_parameter" "db_raw_password" {
   description = "データベースのパスワード"
 
   lifecycle {
-    ignore_changs = [value]
+    ignore_changes = [value]
   }
 }

@@ -14,7 +14,7 @@ module "https_sg" {
   cidr_blocks = ["0.0.0.0/0"]
 }
 
-mpdule "http_redirect_sg" {
+module "http_redirect_sg" {
   source      = "./security_group"
   name        = "http-redirect-sg"
   vpc_id      = aws_vpc.example.id
